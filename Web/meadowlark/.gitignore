@@ -1,0 +1,2 @@
+# npm에서 설치한 패키지를 무시
+node_modules
