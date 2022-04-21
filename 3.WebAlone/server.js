@@ -3,6 +3,11 @@ const app = express(); // 익스프레스의 최상위 함수 express()
 
 app.set('port', process.env.PORT || 3030); // 어플리케이션에 변수 할당 환경변수로 port 번호를 가져오거나 3030으로
 
+const handlebars = require('express-handlebars')
+  .create({ defaultLayout: 'main' }); // 뷰엔진 핸들바 모듈 추가 및 생성, 기본 레이아웃 설정
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars'); // view engine 변수 설정
+
 /*
 app.get('path', callbackfunc);
 GET 메소드 요청을 지정된 경로로 라우트
