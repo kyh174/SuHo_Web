@@ -22,11 +22,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/led-on', (req, res) => {
-  port.write();
+  port.write([1]);
+  res.end();
 });
 
 app.get('/led-off', (req, res) => {
-  port.write();
+  port.write([0]);
+  res.end();
 });
 
 app.listen(3030, () => {
