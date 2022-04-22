@@ -9,9 +9,12 @@
 </head>
 <body>
   <div>
-    <button id="led-on">LED-ON</button>
-    <button id="led-off">LED-OFF</button>
+    <form action="/led-on" method="get">
+      <button type="submit">LED-ON</button>
+    </form>
+    <form action="/led-off" method="get">
+      <button type="submit">LED-OFF</button>
+    </form>
   </div>
 </body>
-<script src="../js/serial.js"></script>
 </html>
