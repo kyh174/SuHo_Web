@@ -13,12 +13,8 @@ void loop() {
     ipt = Serial.read();
     if(ipt == 1) {
       digitalWrite(LED, HIGH);
-      Serial.println(digitalRead(LED));
     } else if(ipt == 0) {
       digitalWrite(LED, LOW);
-      Serial.println(digitalRead(LED));
-    } else {
-      Serial.println("ERROR");
     }
   }
 }
