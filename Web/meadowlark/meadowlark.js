@@ -12,6 +12,11 @@ app.set('view engine', 'handlebars');
 
 app.set('port', process.env.PORT || 3030);
 
+app.use((req, res, next) => {
+  res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
+  next();
+});
+
 // 홈페이지 라우트
 app.get('/', function(req, res) {
   res.render('home');
@@ -19,7 +24,10 @@ app.get('/', function(req, res) {
 
 // 어바웃 페이지 라우트
 app.get('/about', function(req, res) {
-  res.render('about', { fortune: forune.getFortune() });
+  res.render('about', {
+    fortune: forune.getFortune(),
+    pageTestScript: '/qa/tests-about.js'
+  } );
 });
 
 // static 미들웨어
