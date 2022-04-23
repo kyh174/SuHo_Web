@@ -30,6 +30,14 @@ app.get('/about', function(req, res) {
   } );
 });
 
+app.get('/tours/hood-river', (req, res) => {
+  res.render('tours/hood-river');
+});
+
+app.get('/tours/request-group-rate', (req, res) => {
+  res.render('tours/request-group-rate');
+});
+
 // static 미들웨어
 // 폴더 이름이 public인 이유는 이 디렉터리 안에 있는 것은 조건 없이 클라이언트에 보내기 때문
 // 여기에 이미지, CSS파일, 클라이언트 자바스크립트 파일 등을 저장함
