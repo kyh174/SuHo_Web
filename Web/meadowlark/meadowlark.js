@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const forune = require('./lib/fortune.js');
 
 // 핸들바 뷰 엔진 설정
 // 뷰 엔진에서 기본적으로 콘텐츠타입 text/html 과 상태코드 200을 반환하여 따로 명시 안해도 됨
@@ -11,16 +12,6 @@ app.set('view engine', 'handlebars');
 
 app.set('port', process.env.PORT || 3030);
 
-// 포춘 배열
-const fortunes = [
-  "Conquer your fears or they will conquer you.",
-  "Rivers need springs.",
-  "Do not fear what you don't know.",
-  "You will have a pleasant surprise.",
-  "Whenever possible, keep it simple."
-];
-
-
 // 홈페이지 라우트
 app.get('/', function(req, res) {
   res.render('home');
@@ -28,8 +19,7 @@ app.get('/', function(req, res) {
 
 // 어바웃 페이지 라우트
 app.get('/about', function(req, res) {
-  let randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-  res.render('about', { fortune: randomFortune });
+  res.render('about', { fortune: forune.getFortune() });
 });
 
 // static 미들웨어
