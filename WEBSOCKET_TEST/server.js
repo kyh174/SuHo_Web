@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const expressWs = require('express-ws')(app); // 웹소켓
 
 // 포트변수설정
 app.set('port', process.env.PORT || 3000);
@@ -7,13 +8,17 @@ app.set('port', process.env.PORT || 3000);
 // 렌더엔진 설정
 app.set('view engine', 'ejs');
 
+// 바디파서
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get('/', (req, res) => {
-  res.render('main');
+  return res.render('main');
 });
 
 app.post('/send-code', (req, res) => {
   console.log(req.body);
-  return res.send('HI');
+  // return res.send('done');
 });
 
 app.listen(app.get('port'), () => {
