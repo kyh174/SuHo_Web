@@ -16,11 +16,6 @@ app.get('/', (req, res) => {
   return res.render('main');
 });
 
-app.post('/send-code', (req, res) => {
-  console.log(req.body);
-  // return res.send('done');
-});
-
 app.listen(app.get('port'), () => {
   console.log(`http://localhost:${app.get('port')}`);
 });
