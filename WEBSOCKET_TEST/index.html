@@ -13,7 +13,7 @@
     <input type="submit">
   </form>
   <script>
-    const ws = new WebSocket("ws://localhost:3000");
+    const ws = new WebSocket("ws://localhost:3030");
 
     ws.onopen = function(e) {
       ws.send("Client Message: Hi");
