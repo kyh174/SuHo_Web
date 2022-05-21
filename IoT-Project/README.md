@@ -31,3 +31,14 @@
 - 입력으로 받은게 Raspberry Pi로 잘 전송 되는지 확인
 - Raspberry Pi에서 보내는 데이터가 웹페이지에서 출력되는지 확인
 - 잘 되면 웹페이지에서 받은 데이터 Raspberry Pi에서 받아 Python으로 돌리고 결과를 서버로 보내는거까지 테스트
+
+
+## 진행상황 (22.05.22) ##
+- 웹에서 타이핑한 값을 서버로 보내고 이를 웹이 아닌 클라이언트로 보내는 것 성공
+- 웹 -> 서버 -> 라즈베리파이 가 가능해졌다는 얘기
+- javascript 에서 python 을 돌리는 방법은 2가지가 있다.
+  - child-process 사용
+  - python-shell 사용
+- API 문서 잠깐 읽어 봤는데 python-shell 도 결국은 child-process 이용하는 것 같다.
+- 어쨌든 이번에는 python-shell을 사용해 보려고 한다. (얘도 내부적으로는 child-process 쓰는 듯)
+- 그러면 클라이언트에서 할 일은 server에서 받은 값을 임시 python 파일에 쓰고, python-shell 을 이용해서 임시 python 파일을 실행하고 그 결과를 다시 server에 보내주는 것을 해야한다.
