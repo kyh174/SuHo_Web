@@ -11,8 +11,9 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   console.log('socket connected');
-  socket.on('send code', (code) => {
+  socket.on('web send code', (code) => {
     console.log(code);
+    io.emit('server send code', code);
   });
 });
 

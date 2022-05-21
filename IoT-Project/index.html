@@ -21,7 +21,7 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       if (input.value) {
-        socket.emit('send code', input.value);
+        socket.emit('web send code', input.value);
         input.value = '';
       }
     });
