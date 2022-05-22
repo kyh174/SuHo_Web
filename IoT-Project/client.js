@@ -10,9 +10,12 @@ socket.on('server send code', (code) => {
       return
     }
     PythonShell.run('code.py', null, (err, result) => {
-      if (err) throw err;
-      console.log('finished');
-      console.log('results: ' + result);
+      if (err) {
+        socket.emit('client send result error', err);
+        return
+      }
+      console.log(`finished: ${result}`);
+      socket.emit('client send result', result);
     });
   });
 });

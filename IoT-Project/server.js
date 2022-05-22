@@ -15,6 +15,13 @@ io.on('connection', (socket) => {
     console.log(code);
     io.emit('server send code', code);
   });
+  socket.on('client send result', (result) => {
+    console.log(`client result: ${result}`);
+    io.emit('server send result', result);
+  });
+  socket.on('client send result error', (err) => {
+    io.emit('server send result error', err);
+  });
 });
 
 server.listen(3000, () => {

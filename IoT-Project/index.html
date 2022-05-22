@@ -5,18 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>피지컬</title>
+  <style>
+    #result { width: 500px; height: 250px; background-color: #eee; border: solid 1px; }
+  </style>
 </head>
 <body>
   <h1>피지컬</h1>
   <form id="form">
-    <input id="input" autocomplete="off">
+    <textarea id="input" cols="30" rows="15"></textarea>
+    <button type="submit">send</button>
   </form>
+  <h4>result</h4>
+  <div id="result">
+    <!-- <h4>reuslt</h4> -->
+  </div>
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
 
     const input = document.getElementById('input');
     const form = document.getElementById('form');
+    const resultDiv = document.getElementById('result');
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -24,6 +33,14 @@
         socket.emit('web send code', input.value);
         input.value = '';
       }
+    });
+
+    socket.on('server send result', (result) => {
+      resultDiv.innerText = result;
+    });
+
+    socket.on('server send result error', (err) => {
+      resultDiv.innerText = err.traceback;
     });
   </script>
 </body>
