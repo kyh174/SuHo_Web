@@ -11,6 +11,7 @@ socket.on('server send code', (code) => {
     }
     PythonShell.run('code.py', null, (err, result) => {
       if (err) {
+        console.log(err);
         socket.emit('client send result error', err);
         return
       }
