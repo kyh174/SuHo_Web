@@ -2,7 +2,6 @@ const { io } = require('socket.io-client');
 const socket = io('http://192.168.0.100:18090');
 const { PythonShell } = require('python-shell');
 const fs = require('fs');
-let pShell = new PythonShell('code.py', {pythonPath: '/usr/bin/python3'});
 
 socket.on('server send code', (code) => {
   fs.writeFile('./code.py', code, (err) => {
@@ -10,7 +9,7 @@ socket.on('server send code', (code) => {
       console.error(err);
       return
     }
-    pShell.run('code.py', null, (err, result) => {
+    PythonShell.run('code.py', null, (err, result) => {
       if (err) {
         socket.emit('client send result error', err);
         return
